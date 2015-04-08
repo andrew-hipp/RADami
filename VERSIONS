@@ -1,0 +1,29 @@
+v1.0-4, 2014-03-18 through [2015-02-23]
+New features:
+- multicore support in:
+	* consensus.pyRAD
+	* genotypes.pyRAD.loci
+	* group.pyRAD.loci
+	* group.subset.pyRAD.loci
+	* subset.pyRAD.loci 
+- Added LG.plot to plot loci to linkage groups, after blasting to mapped markers
+- subset.pyRAD.loci adds snpLocs to its value, identifying locations of SNPs in the exported data
+- subset.pyRAD.loci adds snpsOnly option, allowing user to just export SNP positions for loci
+- Added group.pyRAD.loci to identify loci that have > n individuals of each of the groups submitted [NO DOCS YET]
+- Added tidyName to clean up names for comparing names that may have messy characters added [NO DOCS YET]
+- Added genotypes.pyRAD.loci to export genotype matrices to hierfstat [NO DOCS YET]
+- write.DNAStringSet now does fasta as well as phylip
+- plot.locus.dist.R now lets you set bar width and the cex for labels above the bars
+
+Bug fixes:
+- subset.pyRAD.loci worked inconsistently when it was exporting SNP dataset and only one SNP was discovered; fixed
+- match.lnL.to.trees previously failed to return a matrix if none of the matrix had bad (NA) columns; fixed
+- genTrees is really buggy, fails often -- NOT YET FIXED
+
+Other notes:
+- There is an indexing problem in hierfstat's getal function that we are getting around by sorting our group numbers in genotypes [NOT DOCUMENTED; need to notify hierfstat developers]
+
+**************************************
+
+v1.0-3  3 March 2014
+- On CRAN
