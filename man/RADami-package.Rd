@@ -22,8 +22,7 @@ Maintainer: Andrew Hipp <ahipp@mortonarb.org>
 }
 \references{
 Eaton D.A.R. & Ree R.H. (2013). Inferring Phylogeny and Introgression using RADseq Data: An Example from Flowering Plants (Pedicularis: Orobanchaceae). Systematic Biolology 62: 689-706.
-
-Hipp A.L., Eaton D.A.R., Cavender-Bares J., Fitzek E., Nipper R. & Manos P.S. (Accepted pending revision). A framework phylogeny of the American oak clade based on sequenced RAD data. PLoS ONE.
-http://www.dereneaton.com/software/
+Hipp A.L., Eaton D.A.R., Cavender-Bares J., Fitzek E., Nipper R. & Manos P.S. 2014. A framework phylogeny of the American oak clade based on sequenced RAD data. PLoS ONE 9: e93975.
+http://www.dereneaton.com/software/pyrad/
 }
 \keyword{ package }

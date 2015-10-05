@@ -7,8 +7,8 @@
 			 in \code{consensusString} can be passed in. As a side-effect, writes
 			 a fasta-style file to \code{writeFile}.}
 \usage{
-consensus.pyRAD(pyIn, from = NA, to = NA, fastaNames = T, 
-                writeFile = "rads.con.txt", ...)
+  function(pyIn, from = NA, to = NA, fastaNames = T, 
+    writeFile = 'rads.con.txt', cores = 1, ...)
 }
 \arguments{
   \item{pyIn}{an object of class \code{pyRAD.loci}}
@@ -19,6 +19,7 @@ consensus.pyRAD(pyIn, from = NA, to = NA, fastaNames = T,
   \item{fastaNames}{use \code{TRUE} to append a \code{>} to the front of each sequence title, making a fasta-
                     style file}
   \item{writeFile}{filename to which to write the sequences}
+  \item{cores} {number of cores to use; requires the \code{parallel} package}
   \item{\dots}{extra arguments to \code{consensusString}}
 }
 \value{A character vector of sequences, with locus names as the vector names.}
