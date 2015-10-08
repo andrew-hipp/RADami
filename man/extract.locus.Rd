@@ -1,42 +1,25 @@
 \name{extract.locus}
 \alias{extract.locus}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
+\title{Extract sequence data for one or a few loci}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+  This function is pretty rudimentary and I've used it but little. As much as anything, it's a reminder for how to get sequence data out of a \code{pyRAD.loci} object.
 }
 \usage{
 extract.locus(pyDat, locName, dat.format = c("text", "fasta", "matrix"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{pyDat}{
-%%     ~~Describe \code{pyDat} here~~
+  \item{pyDat}{an object of class \code{pyRAD.loci}}
+  \item{locName}{character name of the locus or loci you want}
+  \item{dat.format}{currently takes text, fasta, or matrix, but the fasta format would still need to be written to a file}
 }
-  \item{locName}{
-%%     ~~Describe \code{locName} here~~
-}
-  \item{dat.format}{
-%%     ~~Describe \code{dat.format} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+\details{}
+\value{a named character vector if \code{dat.format %in% c('text', 'fasta'), otherwise a matrix}
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp
 }
 \note{
 %%  ~~further notes~~
