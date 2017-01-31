@@ -7,7 +7,7 @@ importFrom(ape, read.tree, write.tree, unroot, all.equal.phylo, c.phylo, c.multi
 importFrom(geiger, heights, rescale)
 importFrom(phangorn, nni, rNNI)
 importFrom(grDevices, dev.off, pdf)
-importFrom(graphics, layout, lines, matplot, plot, points, segments, text)
+importFrom(graphics, layout, lines, matplot, plot, points, segments, text, hist)
 importFrom(stats, as.dist, lm, predict)
 importFrom(utils, read.delim, write.table)
 importFrom(hierfstat, wc)
