@@ -1,5 +1,5 @@
 filter.by <- function(dat, taxa, req = NULL,
-                      threshInds, threshTaxa = 2,
+                      threshInds = 3, threshTaxa = 2,
                       use.tidyName = FALSE, ...) {
   ## returns just loci for which the requested taxa are present at some threshold
   ## default to returning 'all'
@@ -10,9 +10,13 @@ filter.by <- function(dat, taxa, req = NULL,
     row.names(dat$inds.mat) <- tidyName(row.names(dat$inds.mat), ...)
 	taxa <- sapply(taxa, tidyName, ...)
 	}
+  if(length(threshInds) == 1) threshInds <- structure(rep(threshInds, length(taxa)), names = names(taxa))
   dat.mat <- dat$inds.mat[unlist(unique(taxa)), ]
-  tax.thresh.mat <- t(sapply(taxa, function(x) colSums(dat.mat[x, ]) >= threshInds[x]))
-  if(length(req) > 0) dat.mat <- dat.mat[, which(colSums(dat.mat[req, ]) == length(req))]
-  out <- names(which(colSums(dat.mat) >= threshTaxa))
+  tax.thresh.mat <- t(sapply(names(taxa), function(x) colSums(dat.mat[taxa[[x]], ]) >= threshInds[x]))
+  if(length(req) > 1) loc.temp <- names(which(colSums(tax.thresh.mat[req, ]) == length(req)))
+  else if (length(req) == 1) loc.temp <- names(which(tax.thresh.mat[req, ]))
+  else loc.temp <- colNames(tax.thresh.mat)
+  out <- list(loci = intersect(loc.temp, names(which(colSums(tax.thresh.mat) >= threshTaxa))),
+              loc.mat = tax.thresh.mat)
   return(out)
   }

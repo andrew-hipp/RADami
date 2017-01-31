@@ -21,7 +21,11 @@ filter.by(dat, taxa, req,
 }
 \details{Not currently called by any other functions in this package, but useful for quickly
          identifying loci for which data are present in a specified number of individuals}
-\value{A character vector of locus names}
+\value{
+A list with two items:
+  \item{loci}{a character vector of loci that satisfy the filter criteria}
+  \item{loc.mat}{a boolean matrix indicating for each locus which taxa satisfy their individuals threshold}
+}
 \author{Andrew Hipp}
 \seealso{
   \code{\link{subset.pyRAD.loci}}
