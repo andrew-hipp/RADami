@@ -15,7 +15,7 @@ filter.by <- function(dat, taxa, req = NULL,
   tax.thresh.mat <- t(sapply(names(taxa), function(x) colSums(dat.mat[taxa[[x]], ]) >= threshInds[x]))
   if(length(req) > 1) loc.temp <- names(which(colSums(tax.thresh.mat[req, ]) == length(req)))
   else if (length(req) == 1) loc.temp <- names(which(tax.thresh.mat[req, ]))
-  else loc.temp <- colNames(tax.thresh.mat)
+  else loc.temp <- colnames(tax.thresh.mat)
   out <- list(loci = intersect(loc.temp, names(which(colSums(tax.thresh.mat) >= threshTaxa))),
               loc.mat = tax.thresh.mat)
   return(out)

@@ -4,8 +4,8 @@
        either all or some number of them}
 \description{Returns the names of loci for which the requested taxa are present at some threshold}
 \usage{
-filter.by(dat, taxa, req,
-          threshInds = 2, threshTaxa = 2,
+filter.by(dat, taxa, req = NULL,
+          threshInds = 3, threshTaxa = 2,
           use.tidyName = FALSE, ...)
 }
 \arguments{

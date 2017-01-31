@@ -26,7 +26,7 @@
 					for only A,C,G,T, still counting all variable sites; and
 					'verystrict' for only A,C,G,T, countin only parsimony-
 					informative sites.}
-  \transitionsitem{snpsOnly}{choose whether you only want to get SNPs back, or whole locus sequences}
+  \item{snpsOnly}{choose whether you only want to get SNPs back, or whole locus sequences}
   \item{cores}{how many processing cores to use; if \code{cores = 1}, \code{lapply} is used
                 throughout instead of \code{mclapply}}
   \item{\dots}{not currently used, but left for compatibility with generic
