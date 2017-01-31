@@ -26,5 +26,3 @@ A list with the following elements:
 \seealso{
 	\code{\link{subset.pyRAD.loci}}
 }
-
-fst = fst, groups = gr, genotypes = gt, sp.pairs = sp.pairs, snpLocs = dat$snpLocs, timestamp = Sys.time())
