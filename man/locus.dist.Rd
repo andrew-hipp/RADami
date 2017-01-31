@@ -8,7 +8,7 @@ locus.dist(pyIn, proportional = TRUE, upper = TRUE, diagonal = TRUE)
 }
 \arguments{
   \item{pyIn}{an object of class \code{pyRAD.loci}}
-  \item{proportional}{set to \code{TRUE} for a proportional similarity (scaled from 0 to 1), 
+  \item{proportional}{set to \code{TRUE} for a proportional similarity (scaled from 0 to 1),
 					  \code{FALSE} for absolute number of loci shared}
   \item{upper}{set to \code{TRUE} for a symmetrical matrix, \code{FALSE} for a lower-only matrix
 			   }
@@ -16,7 +16,7 @@ locus.dist(pyIn, proportional = TRUE, upper = TRUE, diagonal = TRUE)
 				  for each individual}
 }
 \details{Under the \code{proportional = TRUE} option, this function normalizes based on all loci
-		 in the dataset. Thus, two individuals that share 100% of their loci, but both of which 
+		 in the dataset. Thus, two individuals that share 100% of their loci, but both of which
 		 have sequences for only 90% of the loci reported across the entire dataset, will report
 		 0.9 instead of 1.0.}
 \value{A square matrix with individuals as the rows and columns, and proportions or whole numbers

@@ -11,7 +11,7 @@ filter.by(dat, taxa, req,
 \arguments{
   \item{dat}{an object of class \code{pyRAD.loci} or \code{summary.pyRAD.loci}}
   \item{taxa}{a list of character vectors of taxa or individuals}
-  \item{req}{a boolean vector corresponding to taxa, indicating whether the taxon is required (TRUE) or optional (FALSE)}
+  \item{req}{a character vector listing taxa that are required; defaults to none}
   \item{threshInds}{a vector of integers corresponding to taxa, indicating the threshold number of individuals}
   \item{threshTaxa}{a single integer, indicating how many taxa are required at their \code{threshInds} level to export a locus}
   \item{use.tidyName}{whether to use the \code{tidyName} function for matching taxon names;
