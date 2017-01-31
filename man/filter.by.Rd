@@ -4,7 +4,8 @@
        either all or some number of them}
 \description{Returns the names of loci for which the requested taxa are present at some threshold}
 \usage{
-filter.by(dat, taxa, threshold = "all", use.tidyName = FALSE, ...)
+filter.by(dat, taxa, threshold = "all",
+          use.tidyName = FALSE, ...)
 }
 \arguments{
   \item{dat}{an object of class \code{pyRAD.loci} or \code{summary.pyRAD.loci}}
@@ -14,6 +15,7 @@ filter.by(dat, taxa, threshold = "all", use.tidyName = FALSE, ...)
   \item{use.tidyName}{whether to use the \code{tidyName} function for matching taxon names;
                     useful if there is a mix of uppercase, lowercase, special characters etc.
                     that are not really essential for distinguishing taxa}
+  \item{\dots}{extra arguments to \code{tidyName}}
 }
 \details{Not currently called by any other functions in this package, but useful for quickly
          identifying loci for which data are present in a specified number of individuals}
