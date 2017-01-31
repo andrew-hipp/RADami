@@ -16,27 +16,22 @@ function(x, N = 200, filebase = 'trial', method = c('nni', 'random'), maxmoves =
   if(method[1] == 'nni') {
 	for(i in seq(maxmoves)) {
 	  message(paste('doing maxmoves', i))
-	  if(i == 1) {
-	    originalTree <- list(x)
-		treeset <- c(originalTree, lapply(nni(x), function(x) x))
-		}
+	  if(i == 1) treeset <- c(x, nni(x))
 	  # else treeset <- c(treeset, rNNI(x, i, perms[i]))
-	  else treeset <- c(treeset, lapply(unique(rNNI(x, i, perms[i] * 1.5)), function(x) x))
-	  treeset <- lapply(treeset, unroot)
-	  class(treeset) <- 'multiPhylo'
+	  else treeset <- c(treeset, unique(rNNI(x, i, perms[i] * 1.5)))
+	  treeset <- unroot(treeset)
 	  if(length(treeset) >= sum(perms[1:i], 1)) treeset <- unique(treeset)[1:sum(perms[1:i], 1)]
 	  else(warning(paste('Treeset only includes', length(treeset), 'trees of the', sum(perms[1:i], 1), 'expected')))
 	  treeset <- treeset[!sapply(treeset, is.null)]
 	  # just takes the first set of uniques... chops off non-uniques presented so far
       }	# end i
-	} # end if	  
+	} # end if
   else if(method[1] == 'random') treeset = c(x, rtreePhylo(x, N, ...))
   treeset <- treeset[!sapply(treeset, is.null)]
-  class(treeset) <- 'multiPhylo'
+  # class(treeset) <- 'multiPhylo'
   if(software[1] == 'raxml') {
-	message('writing raxml')
-	write.tree(treeset, file = paste(filebase, '.trees.tre', sep = ''))
-    # write.tree(x, file = paste(filebase, '.optimal.tre', sep = '')) ## no longer separating optimal from full trees
+	  message('writing raxml')
+	  write.tree(treeset, file = paste(filebase, '.trees.tre', sep = ''))
     }
   return(treeset)
   }
