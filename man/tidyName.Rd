@@ -36,3 +36,4 @@ I have used this function in many projects, and duplicates of it linger in a var
 \examples{
 nuttyName <- "Jimmy-Smith"
 notNuttyName <- tidyName("Jimmy-Smith")
+}
