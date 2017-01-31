@@ -26,11 +26,11 @@
 					for only A,C,G,T, still counting all variable sites; and
 					'verystrict' for only A,C,G,T, countin only parsimony-
 					informative sites.}
+  \item{use.tidyName}{choose whether names are passed through tidyName}
   \item{snpsOnly}{choose whether you only want to get SNPs back, or whole locus sequences}
   \item{cores}{how many processing cores to use; if \code{cores = 1}, \code{lapply} is used
                 throughout instead of \code{mclapply}}
-  \item{\dots}{not currently used, but left for compatibility with generic
-			   \code{subset}}
+  \item{\dots}{additional arguments passed to tidyName}
 }
 \details{Probably it would make sense to wrap some of the functioning of
 		 \code{gen.RAD.loci.datasets} into this function, but for now they
