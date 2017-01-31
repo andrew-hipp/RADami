@@ -5,7 +5,8 @@
 			 style}
 \usage{
 \method{plot}{locus.dist}(x, tr, trW = 3, plotW = 5, labelsW = 3, plotGap = 0.25,
-     scalar = 1.5, barH = 1, point.pch = c(21, 21), 
+     scalar = 1.5, barH = 1, barW = 10, bar.cex = 0.5,
+		 point.pch = c(21, 21),
      cols = c('black', 'red'), ...)
 }
 \arguments{
@@ -16,17 +17,19 @@
   \item{labelsW}{width of the panel holding the taxon labels (right side of plot)}
   \item{plotGap}{gap between the side panels and the central panel}
   \item{scalar}{the scalar for the dots in the locus distance plot}
-  \item{barH}{height of the panel holding the }
+  \item{barH}{height of the panel holding the bars}
+	\item{barW}{width of individual bars; goes to \code{lwd}}
+	\item{bar.cex}{font size for numbers above the bars}
   \item{point.pch}{plot character (\code{pch}) for the off-diagonal and diagonal elements of the matrix plot}
   \item{cols}{color for the off-diagonal and diagonal elements of the matrix plot}
   \item{\dots}{additional arguments passed along to \code{text}}
 }
 \details{
-	Use default options in \code{locus.dist} to get a sensible plot. 
+	Use default options in \code{locus.dist} to get a sensible plot.
 	Also, while different plotting characters can be defined for the off-diagonal and diagonal
 	elements of the matrix plot, these may be hard to compare with each other in size; probably
 	the diagonal elements are better distinguished by color or shading.
-	
+
 	Currently, this function is implemented using \code{layout}, which makes it rather clunky
 	and inflexible.
 	}
@@ -40,13 +43,13 @@
 \author{Andrew Hipp}
 \seealso{
 	\code{\link{plot.rankedPartitionedRAD}},
-	\code{\link{locus.dist}}	
+	\code{\link{locus.dist}}
 }
 \examples{
   data(oak.rads)
   data(oak.tree)
   plot.locus.dist(locus.dist(oak.rads, proportional = TRUE), oak.tree)
-  plot.locus.dist(locus.dist(oak.rads, proportional = TRUE, upper = TRUE), 
+  plot.locus.dist(locus.dist(oak.rads, proportional = TRUE, upper = TRUE),
                   ladderize(oak.tree), trW = 1, labelsW = 1, scalar = 3) # a nicer looking plot
 }
 \keyword{hplot}
