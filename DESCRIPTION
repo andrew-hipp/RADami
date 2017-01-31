@@ -1,12 +1,15 @@
 Package: RADami
 Type: Package
 Title: R Package for Phylogenetic Analysis of RADseq Data
-Version: 1.0-4
-Date: 2014-03-03
+Version: 1.0-6
+Date: 2017-01-30
 Author: Andrew L. Hipp <ahipp@mortonarb.org>
 Maintainer: Andrew L. Hipp <ahipp@mortonarb.org>
-Description: This package implements import, export, manipulation, visualization, and downstream 
-             (post-clustering) analysis of RADseq data, integrating with the pyRAD package by Deren Eaton. 
+Description: This package implements import, export, manipulation, visualization, and downstream
+             (post-clustering) analysis of RADseq data, integrating with the pyRAD package by Deren Eaton.
 License: GPL-3
-Depends: ape
-Imports: geiger, Biostrings, phangorn, hierfstat
+Depends: ape (>= 4.0)
+Imports: geiger, Biostrings, phangorn, IRanges, hierfstat
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2014-03-03 12:10:23
