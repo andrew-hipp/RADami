@@ -1,11 +1,5 @@
-pairwise.fst <- function(dat = loci.subsetted.3, group.list = taxa, to.do = c('alba', 'macrocarpa', 'bicolor', 'stellata', 'muehlenbergii'), do.hist = TRUE, cores = 1) {
-## returns pairwise FST list for groups of individuals
-## arguments
-##  dat = object of class subset.pyRAD.loci
-##  group.list = named list of character vectors, indicating groups of individuals
-##  to.do = which groups to generate pairwise data for
-##  do.hist = whether a histogram of pairwise FST should be written to the working directory
-##  cores = how many processing cores to use
+pairwise.fst <- function(dat, group.list, to.do,
+                         do.hist = TRUE, cores = 1) {
   fst <- gt <- gr <- list()
   sp.pairs <- vector('list', 0)
   for(i in 2:length(to.do)) {
