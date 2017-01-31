@@ -10,13 +10,6 @@ genotypes.pyRAD.loci(dat, groups, loci = 'all', taxa = 'all',
 					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 2, toInteger = TRUE, missingData = "0000",
 					cores = 1)
 }
-dat = currently requires a subset.pyRAD.loci object
-##    groups = list of groups of individuals,
-##    taxa = taxa to include
-##    loci = loci to include
-##    useSnps = whether to use first or all SNPs per RAD locus (not yet implemented)
-##    concat = whether to concatenate loci or leave separated as in DAT; not currently implemented
-##    alleleDigits = how many digits for each allele (e.g., two or three for LOSITAN, one for hierfstat)
 \arguments{
   \item{dat}{an object of class \code{subset.pyRAD.loci}}
   \item{groups}{a list of vectors, each vector designating a set of individuals to count for each group}
