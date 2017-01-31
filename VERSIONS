@@ -27,5 +27,10 @@ Other notes:
 
 **************************************
 
+v1.0-5  31 January 2017
+Fixes namespace and simplifies genTrees
+
+**************************************
+
 v1.0-3  3 March 2014
-- On CRAN
+On CRAN
