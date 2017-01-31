@@ -1,49 +1,48 @@
-\name{subset.pyRAD.loci}
-\alias{subset.pyRAD.loci}
-\title{Subsets a \code{pyRAD.loci} object}
-\description{This function returns a dataset (at this point, only in 
-             \code{DNAStringSet} format) from a \code{pyRAD.loci} object, 
-			 subsetting by loci and taxa provided as arguments}
+\name{genotypes.pyRAD.loci}
+\alias{genotypes.pyRAD.loci}
+\title{Generates genotypes from a \code{subset.pyRAD.loci} object}
+\description{Makes a dataframe of SNP calls from a pyRAD.loci object for export to hierfstat}
 \usage{
-genotypes.pyRAD.loci(dat, groups, loci = 'all', taxa = 'all', 
-	                 useSnps = c('first', 'all'), concat = c(FALSE, TRUE), 
-					 use.tidyName = TRUE, na.rm = c('columns', 'rows', 'none'), maxAlleles = 2, 
-					 tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE, cores = 1) {
+genotypes.pyRAD.loci(dat, groups, loci = 'all', taxa = 'all',
+	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE),
+					use.tidyName = TRUE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
+					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE,
+					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 2, toInteger = TRUE, missingData = "0000",
+					cores = 1)
 }
+dat = currently requires a subset.pyRAD.loci object
+##    groups = list of groups of individuals,
+##    taxa = taxa to include
+##    loci = loci to include
+##    useSnps = whether to use first or all SNPs per RAD locus (not yet implemented)
+##    concat = whether to concatenate loci or leave separated as in DAT; not currently implemented
+##    alleleDigits = how many digits for each allele (e.g., two or three for LOSITAN, one for hierfstat)
 \arguments{
-  \item{x}{an object of class \code{pyRAD.loci}}
+  \item{dat}{an object of class \code{subset.pyRAD.loci}}
+  \item{groups}{a list of vectors, each vector designating a set of individuals to count for each group}
   \item{loci}{a character vector of loci to include; defaults to all loci}
   \item{taxa}{a character vector of taxa to include; defaults to all taxa}
-  \item{format}{format for DNA matrix; at this point, only \code{DNAStringSet}
-				is supported}
-  \item{reportInterval}{interval (number of loci) for reporting progress}
-  \item{nucVarType}{nucleotide variability to consider in screening for polymorphism:
-					'relaxed' for all nucleotides, including ambiguities
-					other than 'N', and counting all variable sites; 'strict' 
-					for only A,C,G,T, still counting all variable sites; and
-					'verystrict' for only A,C,G,T, countin only parsimony-
-					informative sites.}
-  \item{use.tidyName} {choose whether or not to use \code{tidyName} when matching
+  \item{useSnps}{xxx}
+  \item{concat}{xxx}
+  \item{use.tidyName}{choose whether or not to use \code{tidyName} when matching
                        names}
-  \item{snpsOnly} {choose whether you only want to get SNPs back, or whole locus sequences}
-  \item{cores} {how many processing cores to use; if \code{cores = 1}, \code{lapply} is used
-                throughout instead of \code{mclapply}  
-  \item{\dots}{not currently used, but left for compatibility with generic
-			   \code{subset}}
+  \item{na.rm}{xxx}
+  \item{maxAlleles}{xxx}
+  \item{tidyVals}{xxx}
+  \item{sortByGroups}{xxx}
+  \item{variableOnly}{xxx}
+  \item{make.dummy.column}{xxx}
+  \item{alleleDigits}{xxx}
+  \item{toInteger}{xxx}
+  \item{missingData}{xxx}
+  \item{cores}{how many processing cores to use; if \code{cores = 1}, \code{lapply} is used
+                throughout instead of \code{mclapply}}
 }
-\details{Probably it would make sense to wrap some of the functioning of 
-		 \code{gen.RAD.loci.datasets} into this function, but for now they
-		 are separated.}
+\details{current not tightly integrated with hierfstat, but designed to be used by it}
 \value{
-	A list with values:
-		\item{DNA}{a list of datasets, one per locus, defined by \code{format}
-				   argument}
-		\item{variable}{a boolean vector, indicating which loci are variable according
-						to the criterion provided in arguments}
-		\item{ntaxa}{an integer vector, indicating how many taxa are in each locus}
+	data.frame of genotypes
 }
 \author{Andrew Hipp}
 \seealso{
-	\code{\link{gen.RAD.loci.datasets}}, 
-	\code{\link{filter.by}}
+	\code{\link{subset.pyRAD.loci}}
 	}

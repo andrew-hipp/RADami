@@ -1,24 +1,14 @@
-genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all', 
-	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE), 
-					use.tidyName = TRUE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2, 
-					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE, 
+genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
+	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE),
+					use.tidyName = TRUE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
+					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE,
 					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 2, toInteger = TRUE, missingData = "0000",
 					cores = 1) {
-##  Makes a dataframe of SNP calls from a pyRAD.loci object for export to hierfstat
-##  arguments:
-##    dat = currently requires a subset.pyRAD.loci object
-##    groups = list of groups of individuals,
-##    taxa = taxa to include
-##    loci = loci to include
-##    useSnps = whether to use first or all SNPs per RAD locus (not yet implemented)
-##    concat = whether to concatenate loci or leave separated as in DAT; not currently implemented
-##    alleleDigits = how many digits for each allele (e.g., two or three for LOSITAN, one for hierfstat)
-##  current not tightly integrated with hierfstat; AH to work on this
   if(!'subset.pyRAD.loci' %in% class(dat)) stop('Currently, this function is written to require DNAStringSet output from subset.pyRAD.loci,\n
                                                  with only SNPs exported')
   if(taxa[1] != 'all') {
     if(cores > 1) dat$DNA <- mclapply(dat$DNA, function(x) x[names(x) %in% taxa], mc.cores = cores)
-    else dat$DNA <- lapply(dat$DNA, function(x) x[names(x) %in% taxa])	
+    else dat$DNA <- lapply(dat$DNA, function(x) x[names(x) %in% taxa])
     dat$DNA <- dat$DNA[sapply(dat$DNA, length) > 0]
 	}
   if(loci[1] != 'all') dat$DNA <- dat$DNA[loci]
@@ -27,7 +17,7 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
   if(length(duplicated.members) > 0) warning('Some individuals are duplicated between groups; excluding duplicates from export, including first')
   groups.vector <- structure(integer(length(unlist(groups)[!duplicated(unlist(groups))])), names = unlist(groups)[!duplicated(unlist(groups))])
   for(i in 1:length(groups)) groups.vector[groups[[i]]][!names(groups.vector[groups[[i]]]) %in% duplicated.members] <- i
-  
+
 ## 3. Translate SNPs to genotypes
   do.this <- function(y) {
 	y.mat <- as.matrix(y)
@@ -35,7 +25,7 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
 	  y.mat.uns <- apply(y.mat, 2, function(x) length(unique(x)) > 1)
       y.mat <- matrix(y.mat[, y.mat.uns], nrow = dim(y.mat)[1], dimnames = list(row.names(y.mat), NULL))
 	  }
-    if(dim(y.mat)[2] == 0) return('failed')	
+    if(dim(y.mat)[2] == 0) return('failed')
     if(alleleDigits > 1) pad <- paste(rep("0", alleleDigits-1), collapse = '')
     else pad <- ''
     tip.names <- row.names(y.mat)
