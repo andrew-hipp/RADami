@@ -23,7 +23,7 @@ genotypes.pyRAD.loci(dat, groups, loci = 'all', taxa = 'all',
   \item{maxAlleles}{xxx}
   \item{tidyVals}{xxx}
   \item{sortByGroups}{xxx}
-  \item{variableOnly}{xxx}
+  \item{variable.only}{xxx}
   \item{make.dummy.column}{xxx}
   \item{alleleDigits}{xxx}
   \item{toInteger}{xxx}
