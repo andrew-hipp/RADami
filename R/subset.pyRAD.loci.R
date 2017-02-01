@@ -1,7 +1,7 @@
 subset.pyRAD.loci <-
-function(x, loci = colnames(x$radSummary$inds.mat), taxa = row.names(x$radSummary$inds.mat), 
+function(x, loci = colnames(x$radSummary$inds.mat), taxa = row.names(x$radSummary$inds.mat),
          format = 'DNAStringSet', reportInterval = 500, mins = 1,
-         nucVarType = c("verystrict", "strict", "relaxed"), 
+         nucVarType = c("verystrict", "strict", "relaxed"),
 		 use.tidyName = FALSE,
          snpsOnly = FALSE, cores = 1, ...) {
 ## Arguments:
@@ -16,7 +16,7 @@ function(x, loci = colnames(x$radSummary$inds.mat), taxa = row.names(x$radSummar
   nucThresh <- switch(nucVarType[1], verystrict = 2, strict = 1, relaxed = 1)
   if(use.tidyName) inds.vector <- tidyName(x$tips, ...) %in% tidyName(taxa, ...)
   else inds.vector <- x$tips %in% taxa
-  
+
   do.it.dna <- function(i) {
 	  seq.index <- x$locus.index == i & inds.vector
 	  dna.temp <- DNAStringSet(x$seqs[seq.index])
@@ -41,7 +41,7 @@ function(x, loci = colnames(x$radSummary$inds.mat), taxa = row.names(x$radSummar
     out$DNA <- out$DNA[sapply(out$DNA, class) != 'try-error']
     } # close if snpsOnly
   the.haves <-  which(sapply(out$DNA, function(x) max(width(x)) > 0))
-  print(the.haves)
+  # print(the.haves)
   out$DNA <- out$DNA[the.haves]
   out$ntaxa <- sapply(out$DNA, length)
   out$variable <- sapply(out$snpLocs, function(i) length(i) > 0)
