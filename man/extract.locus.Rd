@@ -12,7 +12,9 @@ extract.locus(pyDat, locName, dat.format = c("text", "fasta", "matrix"))
   \item{locName}{character name of the locus or loci you want}
   \item{dat.format}{currently takes text, fasta, or matrix, but the fasta format would still need to be written to a file}
 }
-\value{a named character vector if \code{dat.format} %in% c('text', 'fasta'), otherwise a matrix}
+\value{
+A named character vector if \code{dat.format} is 'text' or 'fasta', otherwise a matrix
+}
 \author{
 Andrew Hipp
 }
