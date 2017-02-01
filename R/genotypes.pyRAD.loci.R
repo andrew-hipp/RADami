@@ -2,7 +2,7 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
 	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE),
 					use.tidyName = FALSE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
 					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE,
-					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 2, toInteger = TRUE, missingData = "0000",
+					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 1, toInteger = TRUE, missingData = "0000",
 					cores = 1) {
   if(!'subset.pyRAD.loci' %in% class(dat)) stop('Currently, this function is written to require DNAStringSet output from subset.pyRAD.loci,\n
                                                  with only SNPs exported')
@@ -20,7 +20,7 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
 
 ## 3. Translate SNPs to genotypes
   do.this <- function(y) {
-	y.mat <- as.matrix(y)
+		y.mat <- as.matrix(y)
     if(variable.only) {
 	  y.mat.uns <- apply(y.mat, 2, function(x) length(unique(x)) > 1)
       y.mat <- matrix(y.mat[, y.mat.uns], nrow = dim(y.mat)[1], dimnames = list(row.names(y.mat), NULL))
@@ -30,26 +30,26 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
     else pad <- ''
     tip.names <- row.names(y.mat)
     trans.dna <- t(apply(y.mat, 1, function(x) IUPAC_CODE_MAP[x]))
-	trans.dna <- t(apply(trans.dna, 1, function(x) gsub('A', paste(pad, '1', sep = ''), x)))
-	trans.dna <- t(apply(trans.dna, 1, function(x) gsub('C', paste(pad, '2', sep = ''), x)))
-	trans.dna <- t(apply(trans.dna, 1, function(x) gsub('G', paste(pad, '3', sep = ''), x)))
-	trans.dna <- t(apply(trans.dna, 1, function(x) gsub('T', paste(pad, '4', sep = ''), x)))
-	trans.dna <- t(apply(trans.dna, 1, function(x) {x[nchar(x) == alleleDigits] <- paste(x[nchar(x) == alleleDigits], x[nchar(x) == alleleDigits], sep = ''); return(x)}))
-	trans.dna <- as.matrix(trans.dna)[!apply(as.matrix(trans.dna), 1, function(x) any(nchar(x) > maxAlleles * alleleDigits)), ]
-	if(na.rm[1] == 'rows') trans.dna <- as.matrix(trans.dna)[!apply(as.matrix(trans.dna), 1, function(x) any(is.na(x))), ]
-	if(na.rm[1] == 'columns') trans.dna <- as.matrix(trans.dna)[, !apply(as.matrix(trans.dna), 2, function(x) any(is.na(x)))]
-	if(length(trans.dna) == 0) return(0)
-	groupMembership <- groups.vector[match(tidyName(row.names(as.matrix(trans.dna)), tidyVals), tidyName(names(groups.vector), tidyVals))]
-	if(toInteger) {
-          if(is.null(dim(trans.dna))) trans.dna <- as.integer(trans.dna)
-          else trans.dna <- t(apply(trans.dna, 1, as.integer))
-          }
-        # if(!is.null(dim(trans.dna))) trans.dna <- t(trans.dna)
-        dna.out <- as.data.frame(cbind(groupMembership = groupMembership, trans.dna), stringsAsFactors = FALSE)
-	row.names(dna.out) <- tip.names
-	if(sortByGroups) dna.out <- dna.out[order(dna.out$groupMembership), ]
-	if(make.dummy.column & dim(dna.out)[2] == 2) dna.out$dummy.locus <- rep(11, dim(dna.out)[2])
-	return(dna.out)
+		trans.dna <- t(apply(trans.dna, 1, function(x) gsub('A', paste(pad, '1', sep = ''), x)))
+		trans.dna <- t(apply(trans.dna, 1, function(x) gsub('C', paste(pad, '2', sep = ''), x)))
+		trans.dna <- t(apply(trans.dna, 1, function(x) gsub('G', paste(pad, '3', sep = ''), x)))
+		trans.dna <- t(apply(trans.dna, 1, function(x) gsub('T', paste(pad, '4', sep = ''), x)))
+		trans.dna <- t(apply(trans.dna, 1, function(x) {x[nchar(x) == alleleDigits] <- paste(x[nchar(x) == alleleDigits], x[nchar(x) == alleleDigits], sep = ''); return(x)}))
+		trans.dna <- as.matrix(trans.dna)[!apply(as.matrix(trans.dna), 1, function(x) any(nchar(x) > maxAlleles * alleleDigits)), ]
+		if(na.rm[1] == 'rows') trans.dna <- as.matrix(trans.dna)[!apply(as.matrix(trans.dna), 1, function(x) any(is.na(x))), ]
+		if(na.rm[1] == 'columns') trans.dna <- as.matrix(trans.dna)[, !apply(as.matrix(trans.dna), 2, function(x) any(is.na(x)))]
+		if(length(trans.dna) == 0) return(0)
+		groupMembership <- groups.vector[match(tidyName(row.names(as.matrix(trans.dna)), tidyVals), tidyName(names(groups.vector), tidyVals))]
+		if(toInteger) {
+	          if(is.null(dim(trans.dna))) trans.dna <- as.integer(trans.dna)
+	          else trans.dna <- t(apply(trans.dna, 1, as.integer))
+	          }
+	        # if(!is.null(dim(trans.dna))) trans.dna <- t(trans.dna)
+	        dna.out <- as.data.frame(cbind(groupMembership = groupMembership, trans.dna), stringsAsFactors = FALSE)
+		row.names(dna.out) <- tip.names
+		if(sortByGroups) dna.out <- dna.out[order(dna.out$groupMembership), ]
+		if(make.dummy.column & dim(dna.out)[2] == 2) dna.out$dummy.locus <- rep(11, dim(dna.out)[2])
+		return(dna.out)
 	}
   out <- mclapply(dat$DNA, function(x) try(do.this(x), silent = TRUE), mc.cores = cores) ## need to figure out what is causing do.this to fail, then get rid of try!
   out <- out[sapply(out, class) %in% c('data.frame', 'matrix')] # gets rid of anything that isn't a matrix or a data.frame
