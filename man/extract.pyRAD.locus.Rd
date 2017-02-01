@@ -1,11 +1,11 @@
-\name{extract.locus}
-\alias{extract.locus}
+\name{extract.pyRAD.locus}
+\alias{extract.pyRAD.locus}
 \title{Extract sequence data for one or a few loci}
 \description{
   This function is pretty rudimentary and I've used it but little. As much as anything, it's a reminder for how to get sequence data out of a \code{pyRAD.loci} object.
 }
 \usage{
-extract.locus(pyDat, locName, dat.format = c("text", "fasta", "matrix"))
+extract.pyRAD.locus(pyDat, locName, dat.format = c("text", "fasta", "matrix"))
 }
 \arguments{
   \item{pyDat}{an object of class \code{pyRAD.loci}}
