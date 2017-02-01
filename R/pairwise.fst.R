@@ -1,4 +1,4 @@
-pairwise.fst <- function(dat, group.list, to.do,
+pairwise.fst.loci <- function(dat, group.list, to.do,
                          do.hist = TRUE, cores = 1) {
   fst <- gt <- gr <- list()
   sp.pairs <- vector('list', 0)

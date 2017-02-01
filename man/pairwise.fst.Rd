@@ -1,5 +1,5 @@
-\name{pairwise.fst}
-\alias{pairwise.fst}
+\name{pairwise.fst.loci}
+\alias{pairwise.fst.loci}
 \title{Returns pairwise FST list for groups of individuals}
 \description{for use with RADami}
 \usage{
