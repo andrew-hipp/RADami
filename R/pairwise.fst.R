@@ -7,7 +7,7 @@ pairwise.fst <- function(dat, group.list, to.do,
       message("DOING:")
 	  sp.pairs[[length(sp.pairs) + 1]] <- to.do[c(i, j)]
 	  message(paste(c(to.do[i], to.do[j]), collapse = ' - '))
-	  gr[[to.do[i]]][[to.do[j]]] <- group.subset.pyRAD.loci(dat, group.list[c(to.do[i], to.do[j])], mins = 2, cores = cores)
+	  gr[[to.do[i]]][[to.do[j]]] <- .group.subset.pyRAD.loci(dat, group.list[c(to.do[i], to.do[j])], mins = 2, cores = cores)
 	  gt[[to.do[i]]][[to.do[j]]] <- genotypes.pyRAD.loci(dat, group.list[c(to.do[i], to.do[j])],
                                                        taxa = unlist(group.list[c(to.do[i], to.do[j])]),
                                                        loci = row.names(gr[[to.do[i]]][[to.do[j]]]),
