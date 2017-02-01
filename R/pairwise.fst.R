@@ -1,5 +1,6 @@
 pairwise.fst.loci <- function(dat, group.list, to.do,
-                              minInds = 3, do.hist = TRUE, cores = 1) {
+                              minInds = 3, do.hist = TRUE, cores = 1,
+                              ...) {
   fst <- gt <- gr <- list()
   sp.pairs <- vector('list', 0)
   for(i in 2:length(to.do)) {
@@ -12,7 +13,7 @@ pairwise.fst.loci <- function(dat, group.list, to.do,
 	  gt[[to.do[i]]][[to.do[j]]] <- genotypes.pyRAD.loci(dat, group.list[c(to.do[i], to.do[j])],
                                                        taxa = unlist(group.list[c(to.do[i], to.do[j])]),
                                                        loci = row.names(gr[[to.do[i]]][[to.do[j]]]),
-                                                       cores = cores, na.rm = 'columns')
+                                                       cores = cores, na.rm = 'columns', ...)
       fst[[to.do[i]]][[to.do[j]]] <- mclapply(gt[[to.do[i]]][[to.do[j]]],
                                               function(x) try(wc(x), silent = TRUE),
                                               mc.cores=cores)

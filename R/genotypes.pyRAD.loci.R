@@ -1,6 +1,6 @@
 genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
 	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE),
-					use.tidyName = TRUE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
+					use.tidyName = FALSE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
 					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE,
 					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 2, toInteger = TRUE, missingData = "0000",
 					cores = 1) {
@@ -57,7 +57,7 @@ genotypes.pyRAD.loci <- function(dat, groups, loci = 'all', taxa = 'all',
   if(useSnps[1] == 'first') out <- lapply(out, function(x) x[, 1:2])
   groupMembership <- t(sapply(out, function(w) sapply(1:2, function(x) sum(w$groupMembership == x))))
   dimnames(groupMembership)[[2]] <- names(groups)
-  if(concat) {
+  if(concat[1]) {
     taxa <- unique(unlist(sapply(out, row.names)))
     out <- do.call(cbind, lapply(out, function(x) x[taxa, 2:(dim(x)[2])]))
     row.names(out) <- taxa
