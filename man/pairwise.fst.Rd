@@ -3,7 +3,7 @@
 \title{Returns pairwise FST list for groups of individuals}
 \description{for use with RADami}
 \usage{
-pairwise.fst(dat, group.list, to.do,
+pairwise.fst.loci(dat, group.list, to.do,
              do.hist = TRUE, cores = 1)
 }
 \arguments{

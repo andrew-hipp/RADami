@@ -1,4 +1,5 @@
-exportPattern("^[^unique]")
+# exportPattern("^[^unique]")
+exportPattern("^[^\\.]")
 
 # import(ape, Biostrings)
 importFrom(Biostrings, consensusString, consensusMatrix, DNAStringSet, IUPAC_CODE_MAP)
