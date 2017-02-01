@@ -1,5 +1,5 @@
 pairwise.fst.loci <- function(dat, group.list, to.do,
-                              minInds = 3, do.hist = TRUE, cores = 1,
+                              minInds = 3, do.hist = FALSE, cores = 1,
                               ...) {
   fst <- gt <- gr <- list()
   sp.pairs <- vector('list', 0)

@@ -4,14 +4,17 @@
 \description{for use with RADami}
 \usage{
 pairwise.fst.loci(dat, group.list, to.do,
-                  minInds = 3, do.hist = TRUE, cores = 1)
+                              minInds = 3, do.hist = FALSE, cores = 1,
+                              ...)
 }
 \arguments{
   \item{dat}{an object of class \code{subset.pyRAD.loci}}
   \item{group.list}{named list of character vectors, indicating groups of individuals}
   \item{to.do}{which groups to generate pairwise data for}
+  \item{minInds}{minimum numer of individuals allowed per locus}
   \item{do.hist}{boolean; whether a histogram of pairwise FST should be written to the working directory}
   \item{cores}{how many processing cores to use}
+  \item{\dots}{additional parameters passed along to \code{genotypes.pyRAD.loci}}
 }
 \value{
 A list with the following elements:
