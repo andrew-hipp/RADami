@@ -29,12 +29,8 @@ Known issues:
 - There is an indexing problem in hierfstat's getal function that we are getting around by sorting our group numbers in genotypes [NOT DOCUMENTED; need to notify hierfstat developers]
 - genTrees is really buggy, fails often -- NOT YET FIXED
 
-**************************************
-
 v1.0-5  31 January 2017
 Fixes namespace and simplifies genTrees
-
-**************************************
 
 v1.0-3  3 March 2014
 On CRAN
