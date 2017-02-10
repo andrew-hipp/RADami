@@ -11,9 +11,9 @@
 \usage{
 match.lnL.to.trees(directory = "getwd()",
                    lnLprefix = "RAxML_info.",
-									 lnLsuffix = ".lnL",
+		   lnLsuffix = ".lnL",
                    treeIndexFile = "tree.index.lines.txt",
-									 locus.names = NULL, ...)
+		   locus.names = NULL, ...)
 }
 \arguments{
   \item{directory}{path for the directory in which the 'info' and 'lnL' files were saved by RAxML}

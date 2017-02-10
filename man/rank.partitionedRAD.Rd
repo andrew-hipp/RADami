@@ -6,7 +6,7 @@
 \usage{
 rank.partitionedRAD(radMat, minTrees = 10,
 	                  min.overall.diff.lnL = 5,
-										threshold.lnL = 2,
+		threshold.lnL = 2,
                     discardDoubleCounts = TRUE)
 }
 \arguments{
