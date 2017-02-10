@@ -6,12 +6,13 @@
 			 at minimum need to be included in the datasets, and whether only variable loci
 			 will be included.}
 \usage{
-gen.RAD.loci.datasets(rads, trees = "none", loci = "all", taxa = "all", minTaxa = 4, 
-                      onlyVariable = TRUE, fileBase = "DEFAULT", 
-                      splitInto = 1, 
+gen.RAD.loci.datasets(rads, trees = "none", loci = "all",
+                      taxa = "all", minTaxa = 4, 
+                      onlyVariable = TRUE, fileBase = "DEFAULT",
+                      splitInto = 1,
                       cores = 2,
-                      raxSinglePath = "raxmlHPC-AVX", 
-                      raxMultiPath = "raxmlHPC-PTHREADS-AVX", 
+                      raxSinglePath = "raxmlHPC-AVX",
+                      raxMultiPath = "raxmlHPC-PTHREADS-AVX",
                       header = "#!/bin/sh")
 }
 \arguments{
@@ -23,9 +24,9 @@ gen.RAD.loci.datasets(rads, trees = "none", loci = "all", taxa = "all", minTaxa 
 			  on criteria you provide}
   \item{taxa}{a vector of taxa to include in analysis, or 'all' for all taxa}
   \item{minTaxa}{an integer, specifying the minimum number of taxa required to export a locus}
-  \item{onlyVariable}{either \code{TRUE} or \code{FALSE} depending on whether loci should be 
+  \item{onlyVariable}{either \code{TRUE} or \code{FALSE} depending on whether loci should be
                       variable or not to be exported}
-  \item{fileBase}{base name for the directories and files created by this function; 
+  \item{fileBase}{base name for the directories and files created by this function;
                   defaults to a handy dated format}
   \item{splitInto}{the number of folders to split files into for analysis, in case you
                    want to run several instances of RAxML to get through analysis more
@@ -40,15 +41,15 @@ gen.RAD.loci.datasets(rads, trees = "none", loci = "all", taxa = "all", minTaxa 
 \details{This function subsets the treeset you give it for all the loci imported, then
          matched loci and treesets and a batch file for calculating the likelihood of all
          trees for each locus. It is called for the side-effect of writing all these files.
-		 
+
          All files are exported to a series of folders equal in number to \code{splitInto}
 		 + 1. As currently written, the folder with the suffix \code{.0} holds all batch files, an index of trees
 		 that matches the trees you hand to the function (as \code{trees}) with the trees
-		 it returns in each subset, and the \code{.info} output files that are used by 
-		 \code{get.raxml.treeLikelihoods} as well as the site-likelihood files. The 
+		 it returns in each subset, and the \code{.info} output files that are used by
+		 \code{get.raxml.treeLikelihoods} as well as the site-likelihood files. The
 		 alignments and trees, as well as the reduced alignments created by RAxML, remain
 		 in the split folders (1 through \code{splitInto}).
-		
+
 		 This function is the workhorse of the partitioned RAD analysis and is time-consuming to run.
          It could be executed in parallel and should be in future versions. What is most time-consuming
 		 is that for every treeset exported, the function makes sure that all trees are unique
