@@ -26,6 +26,7 @@ genTrees(x, N = 200, filebase = "trial", method = c("nni", "random"),
 \details{
 The main need for this function is to ensure that the trees you get back are unique... mainly just a wrapper to rNNI and rtree.
 \code{perms} defaults to:
+
 \code{c(length(nni(x)), max(1, as.integer(N - (length(nni(x))))))}
 }
 \value{an object of class \code{"multiPhylo"}}

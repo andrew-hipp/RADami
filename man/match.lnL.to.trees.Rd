@@ -9,8 +9,11 @@
 			 dataset that are compatible with each pruned tree.
 			}
 \usage{
-match.lnL.to.trees(directory = "getwd()", lnLprefix = "RAxML_info.", lnLsuffix = ".lnL",
-                   treeIndexFile = "tree.index.lines.txt", locus.names = NULL, ...)
+match.lnL.to.trees(directory = "getwd()",
+                   lnLprefix = "RAxML_info.",
+									 lnLsuffix = ".lnL",
+                   treeIndexFile = "tree.index.lines.txt",
+									 locus.names = NULL, ...)
 }
 \arguments{
   \item{directory}{path for the directory in which the 'info' and 'lnL' files were saved by RAxML}
