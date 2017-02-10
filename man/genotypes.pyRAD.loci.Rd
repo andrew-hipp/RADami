@@ -7,7 +7,8 @@ genotypes.pyRAD.loci(dat, groups, loci = 'all', taxa = 'all',
 	                             useSnps = c('first', 'all'), concat = c(FALSE, TRUE),
 					use.tidyName = FALSE, na.rm = c('none', 'columns', 'rows'), maxAlleles = 2,
 					tidyVals = c('-', '.','>', '_', ' '), sortByGroups = TRUE,
-					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 1, toInteger = TRUE, missingData = "0000",
+					variable.only = FALSE, make.dummy.column = TRUE, alleleDigits = 1,
+					toInteger = TRUE, missingData = "0000",
 					cores = 1)
 }
 \arguments{
