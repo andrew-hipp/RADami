@@ -1,7 +1,6 @@
 exportPattern("^[^unique]")
 # exportPattern("^[^\\.]")
 
-# import(ape, Biostrings)
 importFrom(Biostrings, consensusString, consensusMatrix, DNAStringSet, IUPAC_CODE_MAP)
 importFrom(IRanges, width)
 importFrom(ape, read.tree, write.tree, unroot, all.equal.phylo, c.phylo, c.multiPhylo, rtree, drop.tip)
