@@ -3,7 +3,9 @@ Type: Package
 Title: R Package for Phylogenetic Analysis of RADseq Data
 Version: 1.1-1
 Date: 2017-01-30
-Author: Andrew L. Hipp <ahipp@mortonarb.org>
+Authors@R: c(person("Andrew", "Hipp", email="ahipp@mortonarb.org", role = c("aut", "cre")),
+              person("Klaus", "Schliep", role = c("ctb"))
+              )
 Maintainer: Andrew L. Hipp <ahipp@mortonarb.org>
 Description: This package implements import, export, manipulation, visualization, and downstream
              (post-clustering) analysis of RADseq data, integrating with the pyRAD package by Deren Eaton.
