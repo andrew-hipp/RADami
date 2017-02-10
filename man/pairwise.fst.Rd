@@ -4,8 +4,8 @@
 \description{for use with RADami}
 \usage{
 pairwise.fst.loci(dat, group.list, to.do,
-                              minInds = 3, do.hist = FALSE, cores = 1,
-                              ...)
+                  minInds = 3, do.hist = FALSE,
+                  cores = 1, ...)
 }
 \arguments{
   \item{dat}{an object of class \code{subset.pyRAD.loci}}

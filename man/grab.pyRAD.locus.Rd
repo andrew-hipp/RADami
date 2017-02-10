@@ -5,7 +5,8 @@
   This function is pretty rudimentary and I've used it but little. As much as anything, it's a reminder for how to get sequence data out of a \code{pyRAD.loci} object.
 }
 \usage{
-grab.pyRAD.locus(pyDat, locName, dat.format = c("text", "fasta", "matrix"))
+grab.pyRAD.locus(pyDat, locName,
+  dat.format = c("text", "fasta", "matrix"))
 }
 \arguments{
   \item{pyDat}{an object of class \code{pyRAD.loci}}

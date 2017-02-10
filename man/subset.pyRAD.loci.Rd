@@ -6,7 +6,7 @@
 			 subsetting by loci and taxa provided as arguments}
 \usage{
 \method{subset}{pyRAD.loci}(x, loci = colnames(x$radSummary$inds.mat),
-                            taxa = row.names(x$radSummary$inds.mat),
+              taxa = row.names(x$radSummary$inds.mat),
 							format = "DNAStringSet", reportInterval = 500, mins = 1,
 							nucVarType = c("verystrict", "strict", "relaxed"),
 							use.tidyName = FALSE,

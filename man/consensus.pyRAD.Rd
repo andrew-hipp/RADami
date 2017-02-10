@@ -26,7 +26,8 @@ consensus.pyRAD(pyIn, from = NA, to = NA, fastaNames = T,
 \author{Andrew Hipp}
 \examples{
   data(oak.rads)
-  temp = consensus.pyRAD(oak.rads, from=1, to = 10, writeFile = NA) # provide filename for export
+  # provide filename for export in line below
+  temp = consensus.pyRAD(oak.rads, from=1, to = 10, writeFile = NA)
   temp
 }
 \keyword{manip}

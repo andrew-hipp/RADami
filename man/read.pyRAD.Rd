@@ -5,7 +5,8 @@
 			 pyRAD loci file and stores it in a form to facilitate a variety of downstream
 			 analyses coded in this package.}
 \usage{
-read.pyRAD(filename, reportInterval = 20000, breakLinesSeparate = FALSE, 
+read.pyRAD(filename, reportInterval = 20000,
+	         breakLinesSeparate = FALSE, 
            doSummary = TRUE, ...)
 }
 \arguments{
@@ -25,10 +26,10 @@ read.pyRAD(filename, reportInterval = 20000, breakLinesSeparate = FALSE,
 		\item{breaks}{an integer vector indexing the lines that are breaks between loci}
 		\item{break.vectors}{a named character vector of the break lines between vectors, with names
 							 corresponding to locus names}
-		\item{cons}{a named character vector of the lines summarizing each locus, with names 	
-					corresponding to locus names; if \code{breakLinesSeparate = F}, this is identical to 
+		\item{cons}{a named character vector of the lines summarizing each locus, with names
+					corresponding to locus names; if \code{breakLinesSeparate = F}, this is identical to
 					\code{break.vectors}}
-		\item{locus.index}{an index corresponding to \code{seqs} and \code{tips}, indicating 
+		\item{locus.index}{an index corresponding to \code{seqs} and \code{tips}, indicating
 						   what locus each belongs to}
 		\item{file.read}{name of the file read in}
 		\item{timestamp}{timestamp for exiting the function}

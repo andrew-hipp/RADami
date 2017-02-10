@@ -9,7 +9,7 @@ generation, then checks to make sure that they are unique before returning the
 original tree plus the generated trees
 }
 \usage{
-genTrees(x, N = 200, filebase = "trial", method = c("nni", "random"), 
+genTrees(x, N = 200, filebase = "trial", method = c("nni", "random"),
          maxmoves = 2, perms = "DEFAULT", software = c("raxml"), ...)
 }
 \arguments{
@@ -18,14 +18,15 @@ genTrees(x, N = 200, filebase = "trial", method = c("nni", "random"),
   \item{filebase}{base name of the file to which trees will be written}
   \item{method}{method of generating the trees, either nearest neighbor interchange (nni) or random}
   \item{maxmoves}{maximum number nni moves}
-  \item{perms}{number of permutations per nni stratum; defaults to the number of single-step nni trees, 
+  \item{perms}{number of permutations per nni stratum; defaults to the number of single-step nni trees,
                then the remainder of N divided by the number of nni strata requested (negatives not allowed)}
   \item{software}{not currently used; in an earlier version, would write out analysis file for PAUP or RAxML}
   \item{\dots}{further arguments to be passed to rtree}
 }
 \details{
-The main need for this function is to ensure that the trees you get back are unique... mainly just a wrapper to rNNI and rtree. 
-\code{perms} defaults to \code{c(length(nni(x)), max(1, as.integer(N - (length(nni(x))))))}
+The main need for this function is to ensure that the trees you get back are unique... mainly just a wrapper to rNNI and rtree.
+\code{perms} defaults to:
+\code{c(length(nni(x)), max(1, as.integer(N - (length(nni(x))))))}
 }
 \value{an object of class \code{"multiPhylo"}}
 \author{Andrew Hipp}
@@ -40,4 +41,3 @@ The main need for this function is to ensure that the trees you get back are uni
   plot(out[[2]]) # this is the first generated tree...
   plot(out[[11]]) # ... and this is the last generated tree.
 }
-
