@@ -2,7 +2,7 @@
 \alias{RADami-package}
 \alias{RADami}
 \docType{package}
-\title{R Package for Phylogenetic Analysis of RADseq Data}
+\title{Phylogenetic Analysis of RADseq Data}
 \description{This package implements import, export, manipulation, visualization, and downstream
              (post-clustering) analysis of RADseq data, integrating with the pyRAD package by Deren Eaton.
 			 It begins with output from the pyRAD package by Deren Eataon (http://dereneaton.com/software; Eaton and Ree, 2013) and
@@ -11,7 +11,7 @@
 \tabular{ll}{
 Package: \tab RADami\cr
 Type: \tab Package\cr
-Version: \tab 1.1-1\cr
+Version: \tab 1.1-2\cr
 Date: \tab 2017-02-10\cr
 License: \tab GPL-3\cr
 }
