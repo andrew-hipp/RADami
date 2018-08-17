@@ -1,4 +1,8 @@
-v1.1-3 -- XX [beginning 2017-02-11]
+v1.1-3 -- [beginning 2017-02-11, last updated 2018-08-17]
+Bug fixes:
+- genTrees documentation fixes if() error
+- corrected error resulting after iPyrad introduced blank lines in loci files;
+  these are now removed from indsMat
 
 v1.1-2  2017-02-10 [submitted to CRAN]
 New function:
