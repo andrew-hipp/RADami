@@ -6,6 +6,7 @@ Date: 2017-02-11
 Authors@R: c(person("Andrew", "Hipp", email="ahipp@mortonarb.org", role = c("aut", "cre")),
               person("Klaus", "Schliep", role = c("ctb"))
               )
+Author: Andrew Hipp [aut, cre]
 Maintainer: Andrew Hipp <ahipp@mortonarb.org>
 Description: Implements import, export, manipulation, visualization, and downstream
              (post-clustering) analysis of restriction-site associated DNA sequencing (RADseq) data,
