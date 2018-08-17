@@ -1,9 +1,11 @@
 summary.pyRAD.loci <-
-function(object, ...) {
+function(object,
+         rm.na = TRUE,
+         ...) {
 # Arguments:
 #  object = a pyRAD.loci object
 #  var.only = if T, only includes variable loci; as written, the function assumes a "*" if there is
-#  REVISED 2014-02-04, so var.only option is excluded; doesn't make much sense in a summary method 
+#  REVISED 2014-02-04, so var.only option is excluded; doesn't make much sense in a summary method
   message("\nDoing a pyRAD summary")
   reportInterval <- 2000 # this is just for screen reporting... only matters with really long files
   ## currently, locus.names includes a null (""), b/c the break lines have no locus name
@@ -30,12 +32,18 @@ function(object, ...) {
 	  }
 	else(message(paste("Error occurred with locus", locus.names[i])))
     if(i / reportInterval - i %/% reportInterval == 0) {
-  	   message(paste('...', i, 'of', num.loci, 
+  	   message(paste('...', i, 'of', num.loci,
  	   '-- Estimated time remaining =', ((Sys.time() - start.time) / i) * (num.loci - i), attr(Sys.time() - start.time, 'units')
   	   ))
 	   }
 	 }
-
+  if(rm.na) {
+    removers <- which(is.na(dimnames(inds.mat)[[1]]))
+    if(length(removers) > 0) {
+      inds.mat <- inds.mat[-removers, ]
+      warning(paste('removed', length(removers), 'individuals with NA names'))
+    }
+  }
   out <- list(num.loci = num.loci, tips.per.locus = tips.per.locus, break.vectors = object$break.vectors, seqs.per.locus = seqs.per.locus, num.inds.per.locus = num.inds.per.locus, variable.loci = variable.loci, inds.mat = inds.mat, locus.lengths = lengths.report(object, 0))
   class(out) <- 'summary.pyRAD.loci'
   out
