@@ -1,6 +1,5 @@
 read.pyRAD <-
-function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary = TRUE,
-         removeNA = TRUE, ...) {
+function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary = TRUE, ...) {
 ## reads the all.aligned file out of pyRAD, parses into names, loci, sequences
 ## updated with breakLinesSeparate in Oct 2012 because pyRAD switched to single-line summaries at the end of each aligned file
 ## updated 2012-11-16 to keep breaklines intact
