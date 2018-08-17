@@ -1,22 +1,22 @@
 gen.RAD.loci.datasets <-
-function(rads, trees = "none", loci = "all", taxa = "all", minTaxa = 4, 
-                      onlyVariable = TRUE, fileBase = "DEFAULT", 
-					  splitInto = 1, 
+function(rads, trees = "none", loci = "all", taxa = "all", minTaxa = 4,
+                      onlyVariable = TRUE, fileBase = "DEFAULT",
+					  splitInto = 1,
 					  cores = 2,
-					  raxSinglePath = "raxmlHPC-AVX", 
-					  raxMultiPath = "raxmlHPC-PTHREADS-AVX", 
+					  raxSinglePath = "raxmlHPC-AVX",
+					  raxMultiPath = "raxmlHPC-PTHREADS-AVX",
 					  header = "#!/bin/sh")
 					  {
-  if(taxa == 'all') taxa <- row.names(rads$radSummary$inds.mat)
+  if(taxa[1] == 'all') taxa <- row.names(rads$radSummary$inds.mat)
   # create directory structure
   if(fileBase == 'DEFAULT') fileBase <- format(Sys.time(), "rads.%Y-%m-%d")
   if(!paste(fileBase, ".", (0), sep = '') %in% dir()) lapply(paste(fileBase, ".", (0:splitInto), sep = ''), dir.create) # defaults to making a directory to hold all the files
-  
+
   # initiate log files
   analysisFileOut <- lapply(paste(fileBase, '.0/raxml.batch.', 1:splitInto, '.', fileBase, '.sh', sep = ''), file, open = "a")
   for(i in 1:splitInto) cat(header, '\n', file = analysisFileOut[[i]])
   indexFileOut <- file(paste(fileBase, '.0/tree.index.lines.txt', sep = ''), 'a')
-  
+
   # make full analysis output
   fullMatrixAnalysisFile <- file(paste(fileBase, '.0/fullMatrix.sh', sep = ''), open = "a")
   cat(header, '\n', file = fullMatrixAnalysisFile)
@@ -27,7 +27,7 @@ function(rads, trees = "none", loci = "all", taxa = "all", minTaxa = 4,
   analysisLine <- paste(raxMultiPath, "-f G -s", paste('../', datFileOut, sep = ''), "-T", cores, "-m GTRGAMMA -z", paste('../', treeFileOut, sep = ''), "-n fullMatrixOut.lnL")
   cat(analysisLine, '\n', file = fullMatrixAnalysisFile)
   close(fullMatrixAnalysisFile)
-  
+
   # subset loci and trees
   if(loci[1] == "all") loci <- unique(rads$locus.index)[unique(rads$locus.index) != ""]
   if(trees[1] != 'none') taxa <- intersect(taxa, trees[[1]]$tip.label)
@@ -36,7 +36,7 @@ function(rads, trees = "none", loci = "all", taxa = "all", minTaxa = 4,
   locus.list <- locus.set$DNA[names(which(locus.set$ntaxa >= minTaxa))]
   if(onlyVariable) locus.list <- locus.list[names(which(locus.set$variable))]
   if(trees[1] != 'none') tree.vector.matrix <- matrix(NA, nrow = length(locus.list), ncol = length(trees), dimnames = list(names(locus.list), names(trees)))
-  
+
   # subset each locus, write them out
   batch <- counter <- 0
   trees <- lapply(trees, function(x) x) #this is a workaround -- lapply wasn't workind correctly on multiPhylo object from nni
