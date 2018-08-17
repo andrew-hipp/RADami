@@ -1,5 +1,6 @@
 read.pyRAD <-
-function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary = TRUE, ...) {
+function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary = TRUE,
+         removeNA = TRUE, ...) {
 ## reads the all.aligned file out of pyRAD, parses into names, loci, sequences
 ## updated with breakLinesSeparate in Oct 2012 because pyRAD switched to single-line summaries at the end of each aligned file
 ## updated 2012-11-16 to keep breaklines intact
@@ -28,7 +29,7 @@ function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary
   #  if(i-1 %in% dat.breakLines) locusCounter <- locusCounter + 1
   #	dat.locus.index[i] <- paste("locus.", locusCounter, sep = "")
   #	if(i / reportInterval - i %/% reportInterval == 0) {
-  #	   message(paste('...', i, 'of', length(dat.locus.index), 
+  #	   message(paste('...', i, 'of', length(dat.locus.index),
   #	   '-- Estimated time remaining =', ((Sys.time() - start.time) / i) * (length(dat.locus.index) - i), attr(Sys.time() - start.time, 'units')
   #	   ))
   #	   }
@@ -38,7 +39,7 @@ function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary
   for (i in 1:length(dat.firstLocusLines)) {
     dat.locus.index[dat.firstLocusLines[i]:dat.lastLocusLines[i]] <- names(dat.breakLines.vector)[i] <- paste("locus.", i, sep = "")
 	if(i / reportInterval - i %/% reportInterval == 0) {
-  	   message(paste('...', i, 'of', length(dat.firstLocusLines), 
+  	   message(paste('...', i, 'of', length(dat.firstLocusLines),
  	   '-- Estimated time remaining =', round(((Sys.time() - start.time) / i) * (length(dat.firstLocusLines) - i), 1), attr(Sys.time() - start.time, 'units')
   	   ))
 	}
