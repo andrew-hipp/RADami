@@ -12,7 +12,7 @@ function(x, N = 200, filebase = 'trial', method = c('nni', 'random'), maxmoves =
   ## January 2014: as written, this doesn't unroot the tree. It ought to, unless you are evaluating trees in a rooted framework (e.g., not using GTR)
   ## 20 January 2014: updated to make sure all trees are unique
   if(perms == 'DEFAULT') perms <- c(length(nni(x)), max(1, as.integer(N-(length(nni(x))))))
-  if(class(x) != 'phylo') stop('This function requires a phylo object as its first argument')
+  if(!'phylo' %in% class(x)) stop('This function requires a phylo object as its first argument')
   if(method[1] == 'nni') {
 	for(i in seq(maxmoves)) {
 	  message(paste('doing maxmoves', i))
