@@ -1,0 +1,19 @@
+rad2nex <-
+  function(pyDat, inds = row.names(pyDat), indNames = NA,
+         loci = dimnames(pyDat)[[2]], outfile = 'pyMat.out.nex',
+         verbose = FALSE, logfile = 'rad2nex.log', ...) {
+## makes a nexux-style data matrix from rad.mat output,
+##   limiting by individuals and loci
+  if(class(pyDat) != "rad.mat") warning("I'm expecting output from rad.mat")
+  temp <- apply(rads.mat[inds, loci], 1, paste, collapse = '')
+  if(!is.na(indNames[1])) row.names(temp) <- indNames
+  if(verbose) message(paste("Writing nexus file"))
+  write.nexus.data(temp, outfile, ...)
+  if(!is.na(logfile) & logfile != '') logfile = file(logfile, 'wt')
+  open(logfile)
+  writeLines(timestamp(), con = logfile)
+  writeLines(paste("Filename:", outfile.name), con = logfile)
+  writeLines("Loci included in nexus file:", con = logfile)
+  writeLines(paste("\t", loci, sep = ''), con = logfile)
+  close(logfile)
+  }
