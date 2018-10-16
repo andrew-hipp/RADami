@@ -6,7 +6,7 @@ rad2nex <-
 ##   limiting by individuals and loci
   if(class(pyDat) != "rad.mat") warning("I'm expecting output from rad.mat")
   temp <- apply(rads.mat[inds, loci], 1, paste, collapse = '')
-  if(!is.na(indNames[1])) row.names(temp) <- indNames
+  if(!is.na(indNames[1])) names(temp) <- indNames
   if(!is.na(fillBlanks[1]))
     temp <- rbind(temp,
       structure(rep(paste(rep('-', nchar(temp[1])),
