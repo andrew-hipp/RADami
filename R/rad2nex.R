@@ -8,7 +8,7 @@ rad2nex <-
   temp <- apply(rads.mat[inds, loci], 1, paste, collapse = '')
   if(!is.na(indNames[1])) names(temp) <- indNames
   if(!is.na(fillBlanks[1]))
-    temp <- rbind(temp,
+    temp <- c(temp,
       structure(rep(paste(rep('-', nchar(temp[1])),
                               collapse = ''),
                     length(fillBlanks)),
