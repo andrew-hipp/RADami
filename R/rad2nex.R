@@ -19,7 +19,7 @@ rad2nex <-
   if(!is.na(logfile) & logfile != '') logfile = file(logfile, 'wt')
   open(logfile)
   writeLines(timestamp(), con = logfile)
-  writeLines(paste("Filename:", outfile.name), con = logfile)
+  writeLines(paste("Filename:", outfile), con = logfile)
   writeLines("Loci included in nexus file:", con = logfile)
   writeLines(paste("\t", loci, sep = ''), con = logfile)
   close(logfile)
