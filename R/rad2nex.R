@@ -1,5 +1,5 @@
 rad2nex <-
-  function(pyDat, inds = row.names(pyDat), indNames = NA, fillBlanks = T,
+  function(pyDat, inds = row.names(pyDat), indNames = NA, fillBlanks = NA,
          loci = dimnames(pyDat)[[2]], outfile = 'pyMat.out.nex',
          verbose = FALSE, logfile = 'rad2nex.log', ...) {
 ## makes a nexux-style data matrix from rad.mat output,
@@ -7,10 +7,10 @@ rad2nex <-
   if(class(pyDat) != "rad.mat") warning("I'm expecting output from rad.mat")
   temp <- apply(rads.mat[inds, loci], 1, paste, collapse = '')
   if(!is.na(indNames[1])) row.names(temp) <- indNames
-  if(!is.na(fillBlanks))
+  if(!is.na(fillBlanks[1]))
     temp <- rbind(temp,
       structure(rep(paste(rep('-', nchar(temp[1])),
-                              collapse = ''), 
+                              collapse = ''),
                     length(fillBlanks)),
                 names = fillBlanks)
               ) # close rbind
