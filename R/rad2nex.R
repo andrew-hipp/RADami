@@ -14,12 +14,16 @@ rad2nex <-
                     length(fillBlanks)),
                 names = fillBlanks)
               ) # close rbind
-  if(verbose) message(paste("Writing nexus file"))
+  if(verbose) {
+    message("Writing nexus file")
+    message(paste("Substitute this number for nchar in your file:", nchar(temp[1])))
+  }
   write.nexus.data(temp, outfile, ...)
   if(!is.na(logfile) & logfile != '') logfile = file(logfile, 'wt')
   open(logfile)
   writeLines(timestamp(), con = logfile)
   writeLines(paste("Filename:", outfile), con = logfile)
+  writeLines(paste("Number of characters:", nchar(temp[1])), con = logfile)
   writeLines("Loci included in nexus file:", con = logfile)
   writeLines(paste("\t", loci, sep = ''), con = logfile)
   close(logfile)
