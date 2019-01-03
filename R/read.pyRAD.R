@@ -6,6 +6,7 @@ function(filename, reportInterval = 20000, breakLinesSeparate = FALSE, doSummary
 ## updated 2012-12-19 to get rid of all conversions to factors... apparently no longer needed for space considerations in R
   message("Reading data...")
   dat <- readLines(filename, ...)
+  dat <- dat[dat != ''] # added 2019-01-03 to get rid of blank lines in the loci file
   dat.breakLines <- dat.consensusLines <- grep("//", dat, fixed = TRUE) # this is slow, but only ca. 1 sec for data runs of 10s of thousands
   dat.breakLines.vector <- dat[dat.breakLines] #added 2012-11-16; ignores possibility of separate breakLines
   message("Splitting data...")
