@@ -14,11 +14,13 @@ function(pyDat, inds = row.names(pyDat), loci = dimnames(pyDat)[[2]], outfile = 
 	cat("\n", file = outfile) # endline
 	}
   close(outfile)
-  if(!is.na(logfile) & logfile != '') logfile = file(logfile, 'wt')
-  open(logfile)
-  writeLines(timestamp(), con = logfile)
-  writeLines(paste("Filename:", outfile.name), con = logfile)
-  writeLines("Loci included in phylip file:", con = logfile)
-  writeLines(paste("\t", loci, sep = ''), con = logfile)
-  close(logfile)
+  if(!is.na(logfile) & logfile != '') {
+    logfile = file(logfile, 'wt')
+    open(logfile)
+    writeLines(timestamp(), con = logfile)
+    writeLines(paste("Filename:", outfile.name), con = logfile)
+    writeLines("Loci included in phylip file:", con = logfile)
+    writeLines(paste("\t", loci, sep = ''), con = logfile)
+    close(logfile)
+  }
   }
