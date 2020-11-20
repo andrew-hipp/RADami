@@ -17,3 +17,5 @@ Then, install using devtools:
 require('devtools')
 install_github('andrew-hipp/RADami')
 ```
+
+Installation has been tested on Windows 10 in R 4.0.3, "Bunny-Wunnies Freak Out" (fails in R 4.0.2)
