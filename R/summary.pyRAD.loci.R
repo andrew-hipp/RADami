@@ -33,8 +33,9 @@ function(object,
 	else(message(paste("Error occurred with locus", locus.names[i])))
     if(i / reportInterval - i %/% reportInterval == 0) {
   	   message(paste('...', i, 'of', num.loci,
- 	   '-- Estimated time remaining =', round(((Sys.time() - start.time) / i) * (num.loci - i), attr(Sys.time() - start.time, 'units'),1)
-  	   ))
+ 	   '-- Estimated time remaining =', round(((Sys.time() - start.time) / i) * (num.loci - i),1), attr(Sys.time() - start.time, 'units')
+        ) # close paste
+      ) # close message
 	   }
 	 }
   if(rm.na) {
