@@ -18,4 +18,4 @@ require('devtools')
 install_github('andrew-hipp/RADami')
 ```
 
-Installation has been tested on Windows 10 in R 4.0.3, "Bunny-Wunnies Freak Out" (fails in R 4.0.2)
+Installation has been tested on Windows 10 and Ubuntu Linux 16.04.7 LTS in R 4.0.3, "Bunny-Wunnies Freak Out" (fails in R 4.0.2)
