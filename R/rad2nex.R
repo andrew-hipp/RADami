@@ -2,10 +2,10 @@ rad2nex <-
   function(pyDat, inds = row.names(pyDat), indNames = NA, fillBlanks = NA,
          loci = dimnames(pyDat)[[2]], outfile = 'pyMat.out.nex',
          verbose = FALSE, logfile = 'rad2nex.log', ...) {
-## makes a nexux-style data matrix from rad.mat output,
+## makes a nexus-style data matrix from rad.mat output,
 ##   limiting by individuals and loci
   if(class(pyDat) != "rad.mat") warning("I'm expecting output from rad.mat")
-  temp <- apply(rads.mat[inds, loci], 1, paste, collapse = '')
+  temp <- apply(pyDat[inds, loci], 1, paste, collapse = '')
   if(!is.na(indNames[1])) names(temp) <- indNames
   if(!is.na(fillBlanks[1]))
     temp <- c(temp,
