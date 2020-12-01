@@ -1,7 +1,10 @@
-\name{rad2phy}
-\alias{rad2phy}
-\title{Export a \code{rad.mat} object to a phylip file}
-\description{This function takes output from \code{rad2mat} and writes it to a phylip file, ready for analysis by RAxML or other software}
+\name{rad2nex}
+\alias{rad2nex}
+\title{Export a \code{rad.mat} object to a Nexus file}
+\description{
+  This function takes output from \code{rad2mat} and writes it to a
+  Nexus file, ready for analysis by PAUP*, BEAST, or other software
+  }
 \usage{
 rad2nex(pyDat, inds = row.names(pyDat), indNames = NA,
         fillBlanks = NA, fillChar = '-',
@@ -13,7 +16,10 @@ rad2nex(pyDat, inds = row.names(pyDat), indNames = NA,
 \arguments{
   \item{pyDat}{an object of class \code{rad.mat}}
   \item{inds}{individuals to include in the export}
-  \item{indNames}{...}
+  \item{indNames}{
+    a vector of names to rename individuals if desired;
+    assumed to be in same order as inds
+    }
   \item{fillBlanks}{...}
   \item{fillChar}{...}
   \item{loci}{...}
