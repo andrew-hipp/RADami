@@ -20,17 +20,18 @@ rad2nex(pyDat, inds = row.names(pyDat), indNames = NA,
     a vector of names to rename individuals if desired;
     assumed to be in same order as inds
     }
-  \item{fillBlanks}{...}
-  \item{fillChar}{...}
-  \item{loci}{...}
-  \item{outfile}{...}
-  \item{verbose}{...}
+  \item{fillBlanks}{integer; number of characters to fill blanks with}
+  \item{fillChar}{character to fill blanks with}
+  \item{loci}{loci to include in the Nexus file, by name}
+  \item{outfile}{file name to write}
+  \item{verbose}{boolean; report number of characters to add to file}
   \item{logfile}{name of logfile, which holds the names of loci in the phylip file written}
 }
-\value{No value. This function is called for the side-effect of writing a phylip file}
+\value{No value. This function is called for the side-effect of writing a Nexus file}
 \author{Andrew Hipp}
 \seealso{
 	\code{\link{rad2mat}},
+  \code{\link{rad2phy}},
 	\code{\link{write.DNAStringSet}}
 }
 \keyword{IO}
