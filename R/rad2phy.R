@@ -1,11 +1,13 @@
 rad2phy <-
-function(pyDat, inds = row.names(pyDat), loci = dimnames(pyDat)[[2]], outfile = 'pyMat.out.phy', padding = 50, verbose = FALSE, logfile = 'rad2phy.log') {
-## makes a phylip-style data matrix from rad.mat output, limiting by individuals and loci
+function(pyDat, inds = row.names(pyDat), loci = dimnames(pyDat)[[2]],
+  outfile = 'pyMat.out.phy', padding = 50, verbose = FALSE, logfile = 'rad2phy.log') {
+  ## makes a phylip-style data matrix from rad.mat output, limiting by individuals and loci
   if(class(pyDat) != "rad.mat") warning("I'm expecting output from rad.mat")
   outfile.name = outfile
   outfile = file(outfile, "wt")
   open(outfile)
-  cat(paste(length(inds), sum(sapply(pyDat[inds[1], loci], nchar)), "\n"), file = outfile) #header: number of individuals, number of bases
+  # write header: number of individuals, number of bases
+  cat(paste(length(inds), sum(sapply(pyDat[inds[1], loci], nchar)), "\n"), file = outfile)
   for(i in inds) {
     if(verbose) message(paste("Writing DNA line for individual", i))
 	cat(i, file = outfile)
