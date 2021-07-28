@@ -1,8 +1,8 @@
 Package: RADami
 Type: Package
 Title: Phylogenetic Analysis of RADseq Data
-Version: 1.1-4
-Date: 2020-12-01
+Version: 1.1-5
+Date: 2021-07-28
 Authors@R: c(person("Andrew", "Hipp", email="ahipp@mortonarb.org", role = c("aut", "cre")),
               person("Klaus", "Schliep", role = c("ctb"))
               )
