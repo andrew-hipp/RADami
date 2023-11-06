@@ -5,7 +5,7 @@ importFrom(Biostrings, consensusString, consensusMatrix, DNAStringSet, IUPAC_COD
 importFrom(IRanges, width)
 #importFrom(ape, read.tree, write.tree, unroot, all.equal.phylo, c.phylo, c.multiPhylo, rtree, drop.tip)
 import(ape)
-importFrom(geiger, heights, rescale)
+import(geiger) # only heights and rescale.phylo needed, but importing whole package for namespace reasons
 importFrom(phangorn, nni, rNNI)
 importFrom(grDevices, dev.off, pdf)
 importFrom(graphics, layout, lines, matplot, plot, points, segments, text, hist)
